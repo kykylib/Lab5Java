@@ -1,9 +1,16 @@
 package liberman;
 
 public class BankAccount {
+    private static int numberForAcc = 1;
     private int accountNumber;
     private String accountName;
     private double balance;
+
+    public BankAccount(String accountName, double balance) {
+        this.accountNumber = numberForAcc++;
+        this.accountName = accountName;
+        this.balance = balance;
+    }
 
     public void deposit(double amount){
         if(amount>0) balance += amount;
@@ -31,5 +38,18 @@ public class BankAccount {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "BankAccount{" +
+                "accountNumber=" + accountNumber +
+                ", accountName='" + accountName + '\'' +
+                ", balance=" + balance +
+                '}';
     }
 }
